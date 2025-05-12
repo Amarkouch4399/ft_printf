@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 18:23:05 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 19:09:59 by ouamarko         ###   ########.fr       */
+/*   Created: 2025/05/12 18:45:11 by ouamarko          #+#    #+#             */
+/*   Updated: 2025/05/12 18:45:42 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <unistd.h>
 
-int ft_printf(const char *format, ...)
+void	ft_putchar(char c)
 {
-	int	i;
-	va_list arg;
-
-	va_start(arg, format);
-	i = 0;
-	if (!format)
-		return (-1);
-	while (format[i])
-	{
-		if(format[i] == '%' && format[i + 1] == 'd')
-		{
-			ft_putnbr(va_arg(arg, int));
-			i++;
-		}
-		else
-			ft_putchar(format[i]);
-		i++;
-	}
-	va_end(arg);
-	return(i);
-}
-
-int main()
-{
-	ft_printf("oussama %d", 423);
+	write(1, &c, 1);
 }

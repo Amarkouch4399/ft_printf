@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 18:23:05 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 19:09:59 by ouamarko         ###   ########.fr       */
+/*   Created: 2025/05/12 18:38:09 by ouamarko          #+#    #+#             */
+/*   Updated: 2025/05/12 19:04:30 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int ft_printf(const char *format, ...)
-{
-	int	i;
-	va_list arg;
+#include <unistd.h>
+#include <stdarg.h>
 
-	va_start(arg, format);
-	i = 0;
-	if (!format)
-		return (-1);
-	while (format[i])
-	{
-		if(format[i] == '%' && format[i + 1] == 'd')
-		{
-			ft_putnbr(va_arg(arg, int));
-			i++;
-		}
-		else
-			ft_putchar(format[i]);
-		i++;
-	}
-	va_end(arg);
-	return(i);
-}
+int	ft_printf(const char *, ...);
+void	ft_putnbr(int nb);
+void	ft_putchar(char c);
 
-int main()
-{
-	ft_printf("oussama %d", 423);
-}
+#endif
