@@ -6,11 +6,11 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:43:12 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 18:45:04 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:04:12 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_size(int nb)
 {

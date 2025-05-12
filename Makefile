@@ -6,12 +6,13 @@
 #    By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/06 17:37:50 by ouamarko          #+#    #+#              #
-#    Updated: 2025/05/06 18:20:41 by ouamarko         ###   ########.fr        #
+#    Updated: 2025/05/12 21:06:07 by ouamarko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME	= libftprintf.a
 
-SRC	= 
+SRC	= ft_printf.c \
+
 
 OBJS	= ${SRC:.c=.o}
 BOBJECTS = $(BSOURCES:.c=.o)
