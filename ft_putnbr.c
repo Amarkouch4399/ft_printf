@@ -6,7 +6,7 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:43:12 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 21:04:12 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:35:19 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_size(int nb)
 	return (size);
 }
 
-static void	ft_putchar(int size, int nb, int temp)
+static void	ft_putchar_nbr(int size, int nb, int temp)
 {
 	char	c;
 
@@ -60,5 +60,5 @@ void	ft_putnbr(int nb)
 	}
 	temp = nb;
 	size = ft_size(nb);
-	ft_putchar(size, nb, temp);
+	ft_putchar_nbr(size, nb, temp);
 }
