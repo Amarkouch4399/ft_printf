@@ -6,37 +6,40 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:23:05 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 21:38:50 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:26:35 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_putnbr_hexa(unsigned long n)
+{
+	char *base = "0123456789abcdef";
+
+	if (n >= 16)
+		ft_putnbr_hexa(n / 16);
+	ft_putchar(base[n % 16]);
+}
+
 void	ft_putchar_pointer(void *ptr)
 {
-	write(1, ptr, 1);
+	if (!ptr)
+		return;
+	ft_putstr("0x");
+	ft_putnbr_hexa((unsigned long)ptr);
 }
 
 int	ft_check(const char *format, int index, va_list arg)
 {
 	if (format[index] == '%' && (format[index + 1] == 'd' || format[index + 1] == 'i'))
-	{
 		ft_putnbr(va_arg(arg, int));
-	}
 	else if (format[index] == '%' && format[index + 1] == 'c')
-	{
 		ft_putchar(va_arg(arg, int));
-	}
 	else if (format[index] == '%' && format[index + 1] == 's')
-	{
 		ft_putstr(va_arg(arg, char *));
-	}
 	else if (format[index] == '%' && format[index + 1] == 'p')
-	{
 		ft_putchar_pointer(va_arg(arg, void *));
-	}
-	index++;
-	return (index);
+	return (index + 2);
 }
 
 int	ft_printf(const char *format, ...)
