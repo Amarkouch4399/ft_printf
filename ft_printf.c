@@ -6,7 +6,7 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:23:05 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/13 19:26:35 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:49:13 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	ft_check(const char *format, int index, va_list arg)
 		ft_putstr(va_arg(arg, char *));
 	else if (format[index] == '%' && format[index + 1] == 'p')
 		ft_putchar_pointer(va_arg(arg, void *));
+	else if (format[index] == '%' && format[index + 1] == '%')
+		ft_putchar('%');
+	else if (format[index] == '%' && format[index + 1] == 'u')
+		ft_putnbr_unsigned(va_arg(arg, unsigned int));
 	return (index + 2);
 }
 
@@ -67,6 +71,6 @@ int	ft_printf(const char *format, ...)
 }
 int	main()
 {
-	ft_printf("oussama %c %p %d %s", 'o', "ouss", 42, "amarkouch");
+	ft_printf("oussama %c %p %d %u", 'o', "ouss", 123546,150);
 	
 }
