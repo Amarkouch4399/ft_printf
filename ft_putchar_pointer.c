@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_pointer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 18:38:09 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/13 21:21:29 by ouamarko         ###   ########.fr       */
+/*   Created: 2025/05/13 20:19:45 by ouamarko          #+#    #+#             */
+/*   Updated: 2025/05/13 21:15:02 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-
-int		ft_printf(const char *format, ...);
-void	ft_putnbr(int nb);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr_unsigned(unsigned int nb);
-void	ft_putnbr_hexa(unsigned long n);
-void	ft_putchar_pointer(void *ptr);
-void	ft_putnbr_hexa(unsigned long n);
-
-#endif
+void	ft_putchar_pointer(void *ptr)
+{
+	if (!ptr)
+		return ;
+	write(1, "0x", 2);
+	ft_putnbr_hexa((unsigned long)ptr);
+}

@@ -6,7 +6,7 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 19:39:15 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/13 19:51:03 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/13 21:12:46 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@ static unsigned int	ft_size(unsigned int nb)
 
 void	ft_putchar_nbr(unsigned int size, unsigned int nb)
 {
-	char	c;
+	char			c;
+	unsigned int	div;
 
-	while (size > 0)
+	div = 1;
+	while (--size > 0)
+		div *= 10;
+	while (div > 0)
 	{
-		c = (nb / size) + '0';
+		c = (nb / div) + '0';
 		write(1, &c, 1);
-		nb = nb % size;
-		size = size / 10;
+		nb %= div;
+		div /= 10;
 	}
 }
 

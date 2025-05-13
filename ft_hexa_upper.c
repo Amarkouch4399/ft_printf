@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_hexa_upper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 18:38:09 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/13 21:21:29 by ouamarko         ###   ########.fr       */
+/*   Created: 2025/05/13 21:03:33 by ouamarko          #+#    #+#             */
+/*   Updated: 2025/05/13 21:17:48 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_hexa_upper(unsigned long n)
+{
+	char	*base;
 
-int		ft_printf(const char *format, ...);
-void	ft_putnbr(int nb);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr_unsigned(unsigned int nb);
-void	ft_putnbr_hexa(unsigned long n);
-void	ft_putchar_pointer(void *ptr);
-void	ft_putnbr_hexa(unsigned long n);
-
-#endif
+	base = "0123456789ABCDEF";
+	if (n >= 16)
+		ft_hexa_upper(n / 16);
+	ft_putchar(base[n % 16]);
+}
