@@ -6,7 +6,7 @@
 #    By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/06 17:37:50 by ouamarko          #+#    #+#              #
-#    Updated: 2025/05/13 21:23:23 by ouamarko         ###   ########.fr        #
+#    Updated: 2025/05/17 16:29:59 by ouamarko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME	= libftprintf.a
@@ -18,7 +18,7 @@ SRC	= ft_printf.c \
 	  ft_hexa_upper.c \
 	  ft_putchar_pointer.c \
 	  ft_putnbr_hexa.c \
-	  ft_putnbr_unsigned.c \
+	  ft_putnbr_unsigned.c
 
 
 OBJS	= ${SRC:.c=.o}

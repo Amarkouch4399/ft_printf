@@ -6,7 +6,7 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:38:09 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/13 21:21:29 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/17 16:26:56 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_putnbr_unsigned(unsigned int nb);
 void	ft_putnbr_hexa(unsigned long n);
 void	ft_putchar_pointer(void *ptr);
 void	ft_putnbr_hexa(unsigned long n);
+void	ft_hexa_upper(unsigned long n);
 
 #endif

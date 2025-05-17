@@ -6,7 +6,7 @@
 /*   By: ouamarko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 21:02:54 by ouamarko          #+#    #+#             */
-/*   Updated: 2025/05/12 21:03:14 by ouamarko         ###   ########.fr       */
+/*   Updated: 2025/05/17 19:50:11 by ouamarko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		write(1, &str[i], 1);
