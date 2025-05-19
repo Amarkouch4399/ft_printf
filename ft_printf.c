@@ -36,6 +36,34 @@ int	ft_check(const char *format, int index, va_list arg)
 	return (count);
 }
 
+int	ft_valid_format(const char *format, int i)
+{
+	if (format[i] == '%' && format[i + 1] != '\0'
+		&& (format[i + 1] == 'c' || format[i + 1] == 's'
+			|| format[i + 1] == 'p' || format[i + 1] == 'd'
+			|| format[i + 1] == 'i' || format[i + 1] == 'u'
+			|| format[i + 1] == 'x' || format[i + 1] == 'X'
+			|| format[i + 1] == '%'))
+		return (1);
+	return (0);
+}
+
+int	ft_percentage(const char *format, va_list arg, int i)
+{
+	int	count;
+
+	count = 0;
+	if (ft_valid_format(format, i) == 1)
+	{
+		count = count + ft_check(format, i, arg);
+		return (count);
+	}
+	else
+	{
+		count = count + ft_putchar('%');
+		return (count);
+	}
+}
 int	ft_printf(const char *format, ...)
 {
 	int			i;
@@ -49,9 +77,9 @@ int	ft_printf(const char *format, ...)
 		return (-1);
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && ft_valid_format(format, i))
 		{
-			count = count + ft_check(format, i, arg);
+			count = count + ft_percentage(format, arg, i);
 			i = i + 2;
 		}
 		else
@@ -67,9 +95,9 @@ int	ft_printf(const char *format, ...)
 #include <stdio.h>
 int	main()
 {
-	ft_printf("oussama %x %s %p %d %x", 1234,"", NULL, 12354, 255);
+	ft_printf("oussama %x %s %p %d %X %m", 1234,"", NULL, 12354, 255);
 	printf("\n");
-	printf("oussama %x %s %p %d %x", 1234,"", NULL, 12354, 255);
-	
+	printf("oussama %x %s %p %d %X %m", 1234,"", NULL, 12354, 255);
+	printf("\n");
 }
 */
