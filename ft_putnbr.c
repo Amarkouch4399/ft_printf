@@ -25,40 +25,46 @@ int	ft_size(int nb)
 	return (size);
 }
 
-static void	ft_putchar_nbr(int size, int nb, int temp)
+static int	ft_putchar_nbr(int size, int nb, int temp)
 {
 	char	c;
+	int		count;
 
+	count = 0;
 	while (size != 0)
 	{
 		nb = temp / size;
 		c = (nb % 10) + '0';
-		write(1, &c, 1);
+		count = count + write(1, &c, 1);
 		size = size / 10;
 	}
+	return (count);
 }
 
-void	ft_putnbr(int nb)
+int	ft_putnbr(int nb)
 {
 	int	temp;
 	int	size;
+	int	count;
 
+	count = 0;
 	if (nb == -2147483648)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		count = count + write(1, "-2147483648", 11);
+		return (count);
 	}
 	if (nb == 0)
 	{
-		write (1, "0", 1);
-		return ;
+		count = count + write (1, "0", 1);
+		return (count);
 	}
 	if (nb < 0)
 	{
-		write(1, "-", 1);
+		count = count + write(1, "-", 1);
 		nb = -nb;
 	}
 	temp = nb;
 	size = ft_size(nb);
-	ft_putchar_nbr(size, nb, temp);
+	count = count + ft_putchar_nbr(size, nb, temp);
+	return (count);
 }

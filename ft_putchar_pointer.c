@@ -12,13 +12,17 @@
 
 #include "ft_printf.h"
 
-void	ft_putchar_pointer(void *ptr)
+int	ft_putchar_pointer(void *ptr)
 {
+	int	count;
+
+	count = 0;
 	if (!ptr)
 	{
-		write(1, "(nil)", 5);
-		return ;
+		count = count + write(1, "(nil)", 5);
+		return (count);
 	}
-	write(1, "0x", 2);
-	ft_putnbr_hexa((unsigned long)ptr);
+	count = count + write(1, "0x", 2);
+	count = count + ft_putnbr_hexa((unsigned long)ptr);
+	return (count);
 }

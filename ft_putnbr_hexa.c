@@ -12,12 +12,15 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbr_hexa(unsigned long n)
+int	ft_putnbr_hexa(unsigned long n)
 {
 	char	*base;
+	int		count;
 
 	base = "0123456789abcdef";
+	count = 0;
 	if (n >= 16)
-		ft_putnbr_hexa(n / 16);
-	ft_putchar(base[n % 16]);
+		count = count + ft_putnbr_hexa(n / 16);
+	count = count + ft_putchar(base[n % 16]);
+	return (count);
 }

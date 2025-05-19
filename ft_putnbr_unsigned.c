@@ -25,32 +25,38 @@ static unsigned int	ft_size(unsigned int nb)
 	return (size);
 }
 
-void	ft_putchar_nbr(unsigned int size, unsigned int nb)
+int	ft_putchar_nbr(unsigned int size, unsigned int nb)
 {
 	char			c;
 	unsigned int	div;
+	int				count;
 
 	div = 1;
+	count = 0;
 	while (--size > 0)
 		div *= 10;
 	while (div > 0)
 	{
 		c = (nb / div) + '0';
-		write(1, &c, 1);
+		count = count + write(1, &c, 1);
 		nb %= div;
 		div /= 10;
 	}
+	return (count);
 }
 
-void	ft_putnbr_unsigned(unsigned int nb)
+int	ft_putnbr_unsigned(unsigned int nb)
 {
 	unsigned int	size;
+	int				count;
 
+	count = 0;
 	if (nb == 0)
 	{
-		write(1, "0", 1);
-		return ;
+		count = count + write(1, "0", 1);
+		return (count);
 	}
 	size = ft_size(nb);
-	ft_putchar_nbr(size, nb);
+	count = count + ft_putchar_nbr(size, nb);
+	return (count);
 }

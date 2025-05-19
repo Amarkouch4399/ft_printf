@@ -14,23 +14,26 @@
 
 int	ft_check(const char *format, int index, va_list arg)
 {
+	int	count;
+
+	count = 0;
 	if (format[index + 1] == 'd' || format[index + 1] == 'i')
-		ft_putnbr(va_arg(arg, int));
+		count = count + ft_putnbr(va_arg(arg, int));
 	else if (format[index] == '%' && format[index + 1] == 'c')
-		ft_putchar(va_arg(arg, int));
+		count = count + ft_putchar(va_arg(arg, int));
 	else if (format[index] == '%' && format[index + 1] == 's')
-		ft_putstr(va_arg(arg, char *));
+		count = count + ft_putstr(va_arg(arg, char *));
 	else if (format[index] == '%' && format[index + 1] == 'p')
-		ft_putchar_pointer(va_arg(arg, void *));
+		count = count + ft_putchar_pointer(va_arg(arg, void *));
 	else if (format[index] == '%' && format[index + 1] == '%')
-		ft_putchar('%');
+		count = count + ft_putchar('%');
 	else if (format[index] == '%' && format[index + 1] == 'u')
-		ft_putnbr_unsigned(va_arg(arg, unsigned int));
+		count = count + ft_putnbr_unsigned(va_arg(arg, unsigned int));
 	else if (format[index] == '%' && format[index + 1] == 'x')
-		ft_putnbr_hexa(va_arg(arg, unsigned int));
+		count = count + ft_putnbr_hexa(va_arg(arg, unsigned int));
 	else if (format[index] == '%' && format[index + 1] == 'X')
-		ft_hexa_upper(va_arg(arg, unsigned int));
-	return (index + 2);
+		count = count + ft_hexa_upper(va_arg(arg, unsigned int));
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
@@ -41,21 +44,24 @@ int	ft_printf(const char *format, ...)
 
 	va_start(arg, format);
 	i = 0;
+	count = 0;
 	if (!format)
 		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			ft_check(format, i, arg);
-			i++;
+			count = count + ft_check(format, i, arg);
+			i = i + 2;
 		}
 		else
-			ft_putchar(format[i]);
-		i++;
+		{
+			count = count + ft_putchar(format[i]);
+			i++;
+		}
 	}
 	va_end(arg);
-	return (i);
+	return (count);
 }
 /*
 #include <stdio.h>
